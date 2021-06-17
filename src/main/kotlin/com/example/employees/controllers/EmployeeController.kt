@@ -1,7 +1,7 @@
-package com.example.hr.controllers
+package com.example.employees.controllers
 
-import com.example.hr.entities.Employee
-import com.example.hr.services.EmployeeService
+import com.example.employees.entities.Employee
+import com.example.employees.services.EmployeeService
 import org.springframework.web.bind.annotation.*
 
 @RestController

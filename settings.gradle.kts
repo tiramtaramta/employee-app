@@ -1,1 +1,1 @@
-rootProject.name = "hr"
+rootProject.name = "employee-app"

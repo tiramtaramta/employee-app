@@ -1,8 +1,8 @@
-package com.example.hr.services
+package com.example.employees.services
 
-import com.example.hr.entities.EmployeeNotFoundException
-import com.example.hr.entities.EmployeeRepository
-import com.example.hr.entities.Employee
+import com.example.employees.entities.EmployeeNotFoundException
+import com.example.employees.entities.EmployeeRepository
+import com.example.employees.entities.Employee
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 

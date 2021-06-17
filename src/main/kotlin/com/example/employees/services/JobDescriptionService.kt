@@ -1,8 +1,8 @@
-package com.example.hr.services
+package com.example.employees.services
 
-import com.example.hr.entities.JobDescriptionNotFoundException
-import com.example.hr.entities.JobDescriptionRepository
-import com.example.hr.entities.JobDescription
+import com.example.employees.entities.JobDescriptionNotFoundException
+import com.example.employees.entities.JobDescriptionRepository
+import com.example.employees.entities.JobDescription
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 

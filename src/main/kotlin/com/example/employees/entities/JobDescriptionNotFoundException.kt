@@ -1,4 +1,4 @@
-package com.example.hr.entities
+package com.example.employees.entities
 
 import org.springframework.http.HttpStatus
 
