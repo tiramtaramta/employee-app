@@ -1,0 +1,6 @@
+version: '3'
+services:
+  employee-app:
+    image: tjozsa/employee-app:latest
+    ports:
+     - 8080:8080
