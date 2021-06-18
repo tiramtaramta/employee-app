@@ -1,5 +1,6 @@
 package com.example.employees.entities
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

@@ -1,31 +1,47 @@
 package com.example.employees.services
 
-import com.example.employees.entities.EmployeeNotFoundException
-import com.example.employees.entities.EmployeeRepository
-import com.example.employees.entities.Employee
+import com.example.employees.entities.*
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
 @Service
 class EmployeeService(private val employeeRepository: EmployeeRepository) {
+
+    @Autowired
+    lateinit var jobDescriptionRepository: JobDescriptionRepository
+
     fun getAllEmployees(): List<Employee> = employeeRepository.findAll()
 
     fun getEmployeesById(employeeId: Long): Employee = employeeRepository.findById(employeeId)
             .orElseThrow { EmployeeNotFoundException(HttpStatus.NOT_FOUND, "No matching employee was found") }
-    fun createEmployee(employee: Employee): Employee = employeeRepository.save(employee)
+    fun createEmployee(payload: EmployeePayload): Employee{
+        return employeeRepository.save(Employee(
+                id = 0,
+                jobDescription = jobDescriptionRepository.findById(payload.jobDescriptionId)
+                        .orElseThrow { JobDescriptionNotFoundException(HttpStatus.NOT_FOUND, "No matching jobDescription was found") },
+                userName = payload.userName,
+                firstName = payload.firstName,
+                middleName = payload.middleName,
+                lastName = payload.lastName,
+                emailId = payload.emailId,
+                dayOfBirth = payload.dayOfBirth
+        ))
+    }
 
-    fun updateEmployeeById(employeeId: Long, employee: Employee): Employee {
+    fun updateEmployeeById(employeeId: Long, payload: EmployeePayload): Employee {
         return if (employeeRepository.existsById(employeeId)) {
             employeeRepository.save(
                     Employee(
-                            id = employee.id,
-                            jobDescription = employee.jobDescription,
-                            userName = employee.userName,
-                            firstName = employee.firstName,
-                            middleName = employee.middleName,
-                            lastName = employee.lastName,
-                            emailId = employee.emailId,
-                            dayOfBirth = employee.dayOfBirth
+                            id = employeeId,
+                            jobDescription = jobDescriptionRepository.findById(payload.jobDescriptionId)
+                                    .orElseThrow { JobDescriptionNotFoundException(HttpStatus.NOT_FOUND, "No matching jobDescription was found") },
+                            userName = payload.userName,
+                            firstName = payload.firstName,
+                            middleName = payload.middleName,
+                            lastName = payload.lastName,
+                            emailId = payload.emailId,
+                            dayOfBirth = payload.dayOfBirth
                     )
             )
         } else throw EmployeeNotFoundException(HttpStatus.NOT_FOUND, "No matching employee was found")

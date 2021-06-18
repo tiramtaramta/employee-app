@@ -3,4 +3,4 @@ services:
   employee-app:
     image: tjozsa/employee-app:latest
     ports:
-     - 8080:8080
+     - 8888:8080

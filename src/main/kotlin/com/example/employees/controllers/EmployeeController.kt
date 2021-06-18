@@ -1,6 +1,7 @@
 package com.example.employees.controllers
 
 import com.example.employees.entities.Employee
+import com.example.employees.entities.EmployeePayload
 import com.example.employees.services.EmployeeService
 import org.springframework.web.bind.annotation.*
 
@@ -15,10 +16,10 @@ class EmployeeController(private val employeeService: EmployeeService) {
             employeeService.getEmployeesById(employeeId)
 
     @PostMapping("/employees")
-    fun createEmployee(@RequestBody payload: Employee): Employee = employeeService.createEmployee(payload)
+    fun createEmployee(@RequestBody payload: EmployeePayload): Employee = employeeService.createEmployee(payload)
 
     @PutMapping("/employees/{id}")
-    fun updateEmployeeById(@PathVariable("id") employeeId: Long, @RequestBody payload: Employee): Employee =
+    fun updateEmployeeById(@PathVariable("id") employeeId: Long, @RequestBody payload: EmployeePayload): Employee =
             employeeService.updateEmployeeById(employeeId, payload)
 
     @DeleteMapping("/employees/{id}")
