@@ -51,3 +51,7 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+springBoot {
+	mainClass to "com.example.employees.EmployeeApplication"
+}

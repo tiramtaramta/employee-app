@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class HrApplication
+class EmployeeApplication
 
 fun main(args: Array<String>) {
-	runApplication<HrApplication>(*args){
+	runApplication<EmployeeApplication>(*args){
 		setBannerMode(Banner.Mode.OFF)
 	}
 }
