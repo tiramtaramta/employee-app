@@ -5,7 +5,10 @@ import com.example.employees.entities.JobDescriptionRepository
 import com.example.employees.entities.JobDescription
 import com.example.employees.entities.JobDescriptionPayload
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import org.springframework.web.bind.annotation.ExceptionHandler
+import javax.persistence.EntityNotFoundException
 
 @Service
 class JobDescriptionService(private val jobDescriptionRepository: JobDescriptionRepository) {
